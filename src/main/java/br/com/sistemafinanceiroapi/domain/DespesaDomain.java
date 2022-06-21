@@ -40,7 +40,7 @@ public class DespesaDomain implements Serializable {
 	private Long codigo;
 	
 	@OneToOne
-	@JoinColumn(name = "ID_CATEGORIA_DESPESA")
+	@JoinColumn(name = "ID_CATEGORIA_DESPESA", nullable = false)
 	private CategoriaDespesaDomain categoriaDespesaDomain;
 	
 	@OneToOne

@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +23,10 @@ public class PessoaDomain implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "CODIGO", nullable = false)
 	private Long codigo;
+	
+	@OneToOne
+	@JoinColumn(name = "ID_CATEGORIA_PESSOA", nullable = false)
+	private CategoriaPessoaDomain categoriaPessoaDomain;
 	
 	@Column(name = "NOME", nullable = false)
 	private String nome;
@@ -74,6 +80,14 @@ public class PessoaDomain implements Serializable {
 
 	public void seteAtivo(Boolean eAtivo) {
 		this.eAtivo = eAtivo;
+	}
+
+	public CategoriaPessoaDomain getCategoriaPessoaDomain() {
+		return categoriaPessoaDomain;
+	}
+
+	public void setCategoriaPessoaDomain(CategoriaPessoaDomain categoriaPessoaDomain) {
+		this.categoriaPessoaDomain = categoriaPessoaDomain;
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package br.com.sistemafinanceiroapi.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,6 +29,26 @@ public class PessoaService {
 		pessoaDomain.seteAtivo(true);
 		pessoaDomain.setUsuarioAtualizacao("USUARIO_SISTEMA");
 		return pessoaDomain;
+	}
+	
+	public List<PessoaDomain> recuperarPessoaFisica() {
+		List<PessoaDomain> pessoaFisicaList = new ArrayList<>();
+		for(PessoaDomain pessoaDomain : this.findAll()) {
+			if(pessoaDomain.getCategoriaPessoaDomain().getDescricao().equals("Pessoa Física")) {
+				pessoaFisicaList.add(pessoaDomain);
+			}
+		}
+		return pessoaFisicaList;
+	}
+	
+	public List<PessoaDomain> recuperarPessoaJuridica() {
+		List<PessoaDomain> pessoaJuridicaList = new ArrayList<>();
+		for(PessoaDomain pessoaDomain : this.findAll()) {
+			if(pessoaDomain.getCategoriaPessoaDomain().getDescricao().equals("Pessoa Jurídica")) {
+				pessoaJuridicaList.add(pessoaDomain);
+			}
+		}
+		return pessoaJuridicaList;
 	}
 
 }

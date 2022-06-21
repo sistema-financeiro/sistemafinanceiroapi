@@ -1,10 +1,16 @@
+-- select * from tb_categoria_pessoa;
+insert into tb_categoria_pessoa (descricao) values ('Pessoa Física');
+insert into tb_categoria_pessoa (descricao) values ('Pessoa Jurídica');
+
 -- select * from tb_pessoa;
 
-insert into tb_pessoa (nome, usuario_atualizacao, data_atualizacao, e_ativo) values ('José Quintino', 'USUARIO_SISTEMA', now(), true);
-insert into tb_pessoa (nome, usuario_atualizacao, data_atualizacao, e_ativo) values ('Priscilla Mariano', 'USUARIO_SISTEMA', now(), true);
-insert into tb_pessoa (nome, usuario_atualizacao, data_atualizacao, e_ativo) values ('Governo do Distrito Federal', 'USUARIO_SISTEMA', now(), true);
-insert into tb_pessoa (nome, usuario_atualizacao, data_atualizacao, e_ativo) values ('Banco do Brasil', 'USUARIO_SISTEMA', now(), true);
-insert into tb_pessoa (nome, usuario_atualizacao, data_atualizacao, e_ativo) values ('PJ Serviços Contábeis', 'USUARIO_SISTEMA', now(), true);
+insert into tb_pessoa (id_categoria_pessoa, nome, usuario_atualizacao, data_atualizacao, e_ativo) values ((select codigo from tb_categoria_pessoa where descricao like 'Pessoa Física'), 'José Quintino', 'USUARIO_SISTEMA', now(), true);
+insert into tb_pessoa (id_categoria_pessoa, nome, usuario_atualizacao, data_atualizacao, e_ativo) values ((select codigo from tb_categoria_pessoa where descricao like 'Pessoa Física'), 'Priscilla Mariano', 'USUARIO_SISTEMA', now(), true);
+insert into tb_pessoa (id_categoria_pessoa, nome, usuario_atualizacao, data_atualizacao, e_ativo) values ((select codigo from tb_categoria_pessoa where descricao like 'Pessoa Jurídica'), 'Governo do Distrito Federal', 'USUARIO_SISTEMA', now(), true);
+insert into tb_pessoa (id_categoria_pessoa, nome, usuario_atualizacao, data_atualizacao, e_ativo) values ((select codigo from tb_categoria_pessoa where descricao like 'Pessoa Jurídica'), 'Sinagoga Keter Torah', 'USUARIO_SISTEMA', now(), true);
+insert into tb_pessoa (id_categoria_pessoa, nome, usuario_atualizacao, data_atualizacao, e_ativo) values ((select codigo from tb_categoria_pessoa where descricao like 'Pessoa Jurídica'), 'Banco do Brasil', 'USUARIO_SISTEMA', now(), true);
+insert into tb_pessoa (id_categoria_pessoa, nome, usuario_atualizacao, data_atualizacao, e_ativo) values ((select codigo from tb_categoria_pessoa where descricao like 'Pessoa Jurídica'), 'PJ Serviços Contábeis', 'USUARIO_SISTEMA', now(), true);
+insert into tb_pessoa (id_categoria_pessoa, nome, usuario_atualizacao, data_atualizacao, e_ativo) values ((select codigo from tb_categoria_pessoa where descricao like 'Pessoa Jurídica'), 'Brava Fibra Internet', 'USUARIO_SISTEMA', now(), true);
 
 -- select * from tb_categoria_conta_bancaria;
 
@@ -49,7 +55,10 @@ insert into tb_produto_servico (descricao) values ('Assessoria de Contabilidade 
 
 -- select * from tb_despesa;
 
-insert into tb_despesa (id_pessoa_favorecido, id_categoria_despesa, data_vencimento, data_pagamento, valor_final) values ((select codigo from tb_pessoa where nome like 'PJ Serviços Contábeis'), (select codigo from tb_categoria_despesa where descricao like 'Despesa Fixa'), '2022-06-05', null, 199.0);
+insert into tb_despesa (id_pessoa_favorecido, id_categoria_despesa, data_vencimento, data_pagamento, valor_final) values ((select codigo from tb_pessoa where nome like 'Sinagoga Keter Torah'), (select codigo from tb_categoria_despesa where descricao like 'Despesa Fixa'), '2022-06-10', null, 200.20);
+insert into tb_despesa (id_pessoa_favorecido, id_categoria_despesa, data_vencimento, data_pagamento, valor_final) values ((select codigo from tb_pessoa where nome like 'Brava Fibra Internet'), (select codigo from tb_categoria_despesa where descricao like 'Despesa Fixa'), '2022-06-10', null, 118.00);
+insert into tb_despesa (id_pessoa_favorecido, id_categoria_despesa, data_vencimento, data_pagamento, valor_final) values ((select codigo from tb_pessoa where nome like 'PJ Serviços Contábeis'), (select codigo from tb_categoria_despesa where descricao like 'Despesa Fixa'), '2022-06-05', null, 199.00);
+insert into tb_despesa (id_pessoa_favorecido, id_categoria_despesa, data_vencimento, data_pagamento, valor_final) values ((select codigo from tb_pessoa where nome like 'Banco do Brasil'), (select codigo from tb_categoria_despesa where descricao like 'Despesa Fixa'), '2022-06-05', null, 9000.00);
 
 -- select * from tb_despesa_produto_servico;
 

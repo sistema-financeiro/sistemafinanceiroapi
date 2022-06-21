@@ -14,7 +14,10 @@ public class DespesaService {
 	
 	@Autowired
 	private DespesaRepository despesaRepository;
-	
+
+	/**
+	 * Verificar se uma determinada Despesa já está cadastrada.
+	 */
 	public DespesaDomain saveOne(DespesaDomain despesaDomain) {
 		return this.despesaRepository.save(despesaDomain);
 	}

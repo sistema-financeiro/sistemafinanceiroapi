@@ -2,6 +2,7 @@ package br.com.sistemafinanceiroapi.controller;
 
 import java.util.List;
 
+import br.com.sistemafinanceiroapi.domain.ProdutoServicoDomain;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,30 +11,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.sistemafinanceiroapi.domain.PessoaDomain;
-import br.com.sistemafinanceiroapi.service.PessoaService;
+import br.com.sistemafinanceiroapi.domain.ProdutoServicoDomain;
+import br.com.sistemafinanceiroapi.service.ProdutoServicoService;
 
 @RestController
-@RequestMapping("/api/v1/pessoa")
+@RequestMapping("/api/v1/produto-servico")
 @CrossOrigin("*")
-public class PessoaController {
+public class ProdutoServicoController {
 	
 	@Autowired
-	private PessoaService pessoaService;
+	private ProdutoServicoService produtoServicoService;
 	
 	@PostMapping
-	public PessoaDomain saveOne(@RequestBody PessoaDomain pessoaDomain) {
-		return this.pessoaService.saveOne(pessoaDomain);
+	public ProdutoServicoDomain saveOne(@RequestBody ProdutoServicoDomain produtoServicoDomain) {
+		return this.produtoServicoService.saveOne(produtoServicoDomain);
 	}
 	
 	@GetMapping
-	public List<PessoaDomain> findAll() {
-		return this.pessoaService.findAll();
-	}
-	
-	@GetMapping("/juridica")
-	public List<PessoaDomain> recuperarPessoaJuridica() {
-		return this.pessoaService.recuperarPessoaJuridica();
+	public List<ProdutoServicoDomain> findAll() {
+		return this.produtoServicoService.findAll();
 	}
 
 }
