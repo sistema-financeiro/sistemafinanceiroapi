@@ -38,6 +38,13 @@ public class DespesaProdutoServicoDomain implements Serializable {
 	
 	public DespesaProdutoServicoDomain() { }
 
+	public DespesaProdutoServicoDomain(DespesaDomain despesaDomain, ProdutoServicoDomain produtoServicoDomain, Double valorUnitario, Integer quantidade) {
+		this.despesaDomain = despesaDomain;
+		this.produtoServicoDomain = produtoServicoDomain;
+		this.valorUnitario = valorUnitario;
+		this.quantidade = quantidade;
+	}
+
 	public Long getCodigo() {
 		return codigo;
 	}

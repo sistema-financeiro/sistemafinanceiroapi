@@ -52,8 +52,12 @@ insert into tb_categoria_despesa (descricao) values ('Despesa Variável');
 
 insert into tb_produto_servico (descricao) values ('Assessoria de Contabilidade Pessoa Física');
 insert into tb_produto_servico (descricao) values ('Assessoria de Contabilidade Pessoa Jurídica');
+insert into tb_produto_servico (descricao) values ('Fatura de Cartão de Crédito');
+insert into tb_produto_servico (descricao) values ('Assessoria Jurídica Passoa Física');
+insert into tb_produto_servico (descricao) values ('Assessoria Jurídica Passoa Jurídica');
 
 -- select * from tb_despesa;
+-- delete from tb_despesa where codigo is not null;
 
 insert into tb_despesa (id_pessoa_favorecido, id_categoria_despesa, data_vencimento, data_pagamento, valor_final) values ((select codigo from tb_pessoa where nome like 'Sinagoga Keter Torah'), (select codigo from tb_categoria_despesa where descricao like 'Despesa Fixa'), '2022-06-10', null, 200.20);
 insert into tb_despesa (id_pessoa_favorecido, id_categoria_despesa, data_vencimento, data_pagamento, valor_final) values ((select codigo from tb_pessoa where nome like 'Brava Fibra Internet'), (select codigo from tb_categoria_despesa where descricao like 'Despesa Fixa'), '2022-06-10', null, 118.00);
@@ -65,3 +69,14 @@ insert into tb_despesa (id_pessoa_favorecido, id_categoria_despesa, data_vencime
 insert into tb_despesa_produto_servico (id_despesa, id_produto_servico, valor_unitario, quantidade) values (1, 1, 199.00, 1);
 insert into tb_despesa_produto_servico (id_despesa, id_produto_servico, valor_unitario, quantidade) values (1, 2, 99.00, 1);
 
+-- select * from tb_categoria_senha;
+insert into tb_categoria_senha (descricao) values ('Aplicativo');
+insert into tb_categoria_senha (descricao) values ('Cartão de Crédito');
+insert into tb_categoria_senha (descricao) values ('Cartão de Débito');
+insert into tb_categoria_senha (descricao) values ('Site');
+
+-- select * from tb_senha;
+insert into tb_senha (id_categoria_senha, titulo, identificador, senha_alfanumerica, url, observacao, is_biometria, is_ativo) values (
+    (select codigo from tb_categoria_senha where descricao like 'Site'),
+    'Apple - iClound', 'josequintino@hotmail.com.br', '*****************************', null, 'https://www.iclound.com', '', true
+);

@@ -1,14 +1,18 @@
 package br.com.sistemafinanceiroapi.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -46,6 +50,9 @@ public class DespesaDomain implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "ID_PESSOA_FAVORECIDO")
 	private PessoaDomain pessoaFavorecido;
+	
+	@OneToMany(mappedBy = "despesaDomain", cascade = CascadeType.ALL)
+	private List<DespesaProdutoServicoDomain> despesaProdutoServicoDomainList = new ArrayList<>();
 	
 	@Column(name = "DATA_VENCIMENTO", nullable = false)
 	private Date dataVencimento;
@@ -104,6 +111,14 @@ public class DespesaDomain implements Serializable {
 
 	public void setValorFinal(Double valorFinal) {
 		this.valorFinal = valorFinal;
+	}
+
+	public List<DespesaProdutoServicoDomain> getDespesaProdutoServicoDomainList() {
+		return despesaProdutoServicoDomainList;
+	}
+
+	public void setDespesaProdutoServicoDomainList(List<DespesaProdutoServicoDomain> despesaProdutoServicoDomainList) {
+		this.despesaProdutoServicoDomainList = despesaProdutoServicoDomainList;
 	}
 
 }
